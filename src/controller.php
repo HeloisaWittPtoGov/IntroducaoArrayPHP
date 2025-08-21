@@ -12,6 +12,8 @@ if ($_GET['action'] == 'listaCompra') {
         echo "<li>".$item. "</li>";
       }
       echo "</ul>";
+      $nrItens = count($arrListaCompras);
+      echo "Total de Itens:".$nrItens;
       break;
     case 'adicionar2': 
       array_push($arrListaCompras,"Azeite","Maionese");
@@ -20,6 +22,8 @@ if ($_GET['action'] == 'listaCompra') {
         echo "<li>".$item. "</li>";
       }
       echo "</ul>";
+      $nrItens = count($arrListaCompras);
+      echo "Total de Itens:".$nrItens;
       break;
       
     case 'removerPrimeiro': 
@@ -30,6 +34,7 @@ if ($_GET['action'] == 'listaCompra') {
         echo "<li>".$item. "</li>";
       }
       echo "</ul>";
-     
+      $nrItens = count($arrListaCompras);
+      echo "Total de Itens:".$nrItens;
   }
 }

@@ -75,5 +75,18 @@
       </table>
       <ul id="exibiListaCompras"></ul>
     </div>
+    <div>
+      <table>
+        <tr>
+          <td>
+            <button type="button" id="BtnOrdemAlfabetica">Ordem Alfabética</button>
+          </td>
+          <td>
+            <button type="button" id="BtnOrdemDecrescente">Ordem Decrescente</button>
+          </td>
+        </tr>
+      </table>
+      <ul id="exibeNomes"></ul>
+    </div>
   </body>
 </html>
