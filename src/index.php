@@ -184,6 +184,23 @@
             }
           )
         })
+        $("#BtnAtualizarAluno").on('click', function(){
+          $.post(
+            "controller.php",
+            {
+            action: "exibeAlunos",
+            etapa: "atualizarAluno",
+            nome: $("#nmAluno").val(),
+            idade: $("#nrIdade").val(),
+            nota: $("#nrNota").val(),
+          },
+          function(response){
+            $("#exibeAlunos").empty()
+            $("#exibeAlunos").append(response)
+          }
+
+          )
+        })
 
       })
     </script>
@@ -288,6 +305,9 @@
           </td>
           <td>
             <button type="button" id="BtnIncluirAluno">Incluir Aluno</button>
+          </td>
+          <td>
+            <button type="button" id="BtnAtualizarAluno">Atualizar Aluno</button>
           </td>
         </tr>
       </table>

@@ -125,7 +125,7 @@ else if ($_POST['action'] == 'exibeAlunos'){
   $idade = $_POST["idade"];
   $nota = $_POST["nota"];
 
-   switch ($_POST['etapa']) {
+  switch ($_POST['etapa']) {
     case 'consultaAluno':
       echo '<pre>';
       print_r($arrAlunos);
@@ -143,5 +143,18 @@ else if ($_POST['action'] == 'exibeAlunos'){
       echo'</pre>';
 
       break;
-  }    
+
+    case "atualizarAluno":
+      $novaNota =$_POST["nota"];
+      foreach($arrAlunos as &$aluno){
+        if($aluno['nome']=== $nome){
+          $aluno['nota'] = $novaNota;
+        }
+      }
+      echo '<pre>';
+      print_r($arrAlunos);
+      echo'</pre>';
+      
+  }   
+  
 }
