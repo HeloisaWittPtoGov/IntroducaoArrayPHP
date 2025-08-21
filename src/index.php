@@ -156,6 +156,34 @@
             }
           )
         })
+        $("#BtnExibeAlunos").on("click", function(){
+          $.post(
+            "controller.php",
+            {
+              action: "exibeAlunos",
+              etapa:"consultaAluno",
+            },
+            function(response){
+              $("#exibeAlunos").append(response)
+            }
+          )
+        })
+        $("#BtnIncluirAluno").on("click", function(){
+          $.post(
+            "controller.php",
+            {
+              action: "exibeAlunos",
+              etapa: "incluirAlunos",
+              nome: $("#nmAluno").val(),
+              idade: $("#nrIdade").val(),
+              nota: $("#nrNota").val(),
+            },
+            function(response){
+              $("#exibeAlunos").empty()
+              $("#exibeAlunos").append(response)
+            }
+          )
+        })
 
       })
     </script>
@@ -233,6 +261,37 @@
         </tr>
       </table>
       <p id="exibeProdutos"></p>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <td>
+            <button type="button" id="BtnExibeAlunos">Exibir Alunos</button>
+          </td>
+          <td style="text-align: right;">
+            Nome:
+          </td>
+          <td>
+            <input id="nmAluno" type="text">
+          </td>
+          <td style="text-align: right;">
+            Idade:
+          </td>
+          <td>
+            <input id="nrIdade" type="number">
+          </td>
+          <td style="text-align: right;">
+            Nota:
+          </td>
+          <td>
+            <input id="nrNota" type="number">
+          </td>
+          <td>
+            <button type="button" id="BtnIncluirAluno">Incluir Aluno</button>
+          </td>
+        </tr>
+      </table>
+      <ul id="exibeAlunos"></ul>
     </div>
   </body>
 </html>

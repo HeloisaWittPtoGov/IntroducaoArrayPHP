@@ -115,3 +115,33 @@ else if ($_GET['action'] == 'exibeProduto'){
   echo '</pre>';
 
 }
+else if ($_POST['action'] == 'exibeAlunos'){
+  $arrAlunos =[
+    "101"=>["nome"=>"Maria","idade"=>20,"nota"=>8.7],
+    "102"=>["nome"=>"Lucas","idade"=>21,"nota"=>9.5],
+    "103"=>["nome"=>"Ana","idade"=>19,"nota"=>6.7]
+  ];
+  $nome = $_POST["nome"];
+  $idade = $_POST["idade"];
+  $nota = $_POST["nota"];
+
+   switch ($_POST['etapa']) {
+    case 'consultaAluno':
+      echo '<pre>';
+      print_r($arrAlunos);
+      echo'</pre>';
+      break;
+    
+    case'incluirAlunos':
+      $novoAluno = ['nome'=> $nome,'idade'=> $idade,'nota'=> $nota];
+
+      $novoId = count($arrAlunos) + 101;
+      $arrAlunos[$novoId]=$novoAluno;
+
+      echo '<pre>';
+      print_r($arrAlunos);
+      echo'</pre>';
+
+      break;
+  }    
+}
