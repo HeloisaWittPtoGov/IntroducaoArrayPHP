@@ -19,11 +19,41 @@
             
             function(response){
             $("#exibiListaCompras").append(response)
-              
+              $("#BtnAdicionar2").prop("disabled", false);
+              $("#BtnExibirListaCompras").prop("disabled", true);
               console.log(response)
             },
+          ) 
+        })
+        $("#BtnAdicionar2").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action: "listaCompra",
+              etapa: "adicionar2",
+            },
+
+            function(response){
+            $("#exibiListaCompras").empty(),
+            $("#exibiListaCompras").append(response),
+            $("#BtnRemover").prop("disabled", false);
+            console.log(response)
+            }
           )
-          
+        })
+
+        $("#BtnRemover").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action: "listaCompra",
+              etapa:"removerPrimeiro",
+            },
+            function(response){
+              $("#exibiListaCompras").empty()
+              $("#exibiListaCompras").append(response)
+            }
+          )
         })
       })
     </script>
@@ -34,6 +64,12 @@
         <tr>
           <td>
             <button type="button" id="BtnExibirListaCompras">Exibir Lista de Compras</button>
+          </td>
+          <td>
+            <button type="button" id="BtnAdicionar2" disabled>Adicionar</button>
+          </td>
+          <td>
+            <button type="button" id="BtnRemover" disabled>Remover</button>
           </td>
         </tr>
       </table>
