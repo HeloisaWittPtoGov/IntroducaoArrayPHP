@@ -145,6 +145,17 @@
             }
           )
         })
+        $("#BtnExibirProdutos").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action: "exibeProduto",
+            },
+            function(response){
+              $("#exibeProdutos").empty().append(response)
+            }
+          )
+        })
 
       })
     </script>
@@ -212,6 +223,16 @@
         </tr>
       </table>
       <p id="informaFruta"></p>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <td>
+            <button type="button" id="BtnExibirProdutos">Exibir Produtos</button>
+          </td>
+        </tr>
+      </table>
+      <p id="exibeProdutos"></p>
     </div>
   </body>
 </html>

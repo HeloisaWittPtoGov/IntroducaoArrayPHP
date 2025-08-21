@@ -101,3 +101,17 @@ else if ($_POST['action'] == 'pesquisarFruta'){
     echo "A fruta ".$nmFruta." Nao foi encontrada";
   }
 }
+else if ($_GET['action'] == 'exibeProduto'){
+  $arrProdutos = ["Arroz","Feijao","Macarrao"];
+  $arrPrecos = ["5.50","7.20","4.80"];
+
+  array_push($arrProdutos,"Azeite");
+  array_push($arrPrecos,"6.59");
+
+  $arrListaProdutos = array_combine($arrProdutos, $arrPrecos);
+
+  echo '<pre>';
+  print_r($arrListaProdutos);
+  echo '</pre>';
+
+}
