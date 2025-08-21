@@ -88,3 +88,16 @@ else if ($_GET['action'] == 'filtraNumeros'){
   }
   
 }
+else if ($_POST['action'] == 'pesquisarFruta'){
+  $arrFrutas = ["Morango","Banana","Uva","Tangerina","Abacaxi", "Melancia"];
+
+  $nmFruta = $_POST["fruta"];
+
+  $indice = array_search($nmFruta, $arrFrutas);
+
+  if ($indice !== false){
+    echo "A fruta ".$nmFruta." Foi encontrada na posicao:".$indice;
+  } else{
+    echo "A fruta ".$nmFruta." Nao foi encontrada";
+  }
+}

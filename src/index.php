@@ -117,8 +117,7 @@
               etapa: "filtraPares"
             },
             function(response){
-              $("#exibeNumeros").empty()
-              $("#exibeNumeros").append(response)
+              $("#exibeNumeros").empty().append(response)
             }
           )
         })
@@ -130,10 +129,21 @@
                 etapa: "filtraImpares"
               },
               function(response){
-                $("#exibeNumeros").empty()
-                $("#exibeNumeros").append(response)
+                $("#exibeNumeros").empty().append(response)
               }
             )
+        })
+        $("#BtnPesquisarFruta").on("click", function(){
+          $.post(
+            "controller.php",
+            {
+              action: "pesquisarFruta",
+              fruta: $("#nmFruta").val(),
+            },
+            function(response){
+              $("#informaFruta").empty().append(response)
+            }
+          )
         })
 
       })
@@ -186,6 +196,22 @@
         </tr>
       </table>
       <ul id="exibeNumeros"></ul>
+    </div>
+    <div>
+      <table>
+        <tr>
+        <td style="text-align: right;">
+          Fruta:
+        </td>
+        <td>
+          <input id="nmFruta" type="text">
+        </td>
+        <td>
+          <button type="button" id="BtnPesquisarFruta">Pesquisar</button>
+        </td>
+        </tr>
+      </table>
+      <p id="informaFruta"></p>
     </div>
   </body>
 </html>
