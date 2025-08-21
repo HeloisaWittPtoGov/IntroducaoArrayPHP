@@ -63,7 +63,9 @@
               etapa: "exibirNomes",
             },
             function(response){
+               $("#exibeNomes").empty()
               $("#exibeNomes").append(response)
+              
             }
           )
         })
@@ -75,7 +77,21 @@
               etapa: "ordemAlfabetica"
             },
             function(response){
-
+              $("#exibeNomes").empty()
+              $("#exibeNomes").append(response)
+            }
+          )
+        })
+        $("#BtnOrdemDecrescente").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action:"ordenarNomes",
+              etapa: "ordemDecrescente"
+            },
+            function(response){
+              $("#exibeNomes").empty()
+              $("#exibeNomes").append(response)
             }
           )
         })

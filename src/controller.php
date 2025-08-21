@@ -53,8 +53,21 @@ else if ($_GET['action'] == 'ordenarNomes'){
       break;
 
     case "ordemAlfabetica":
+      sort($arrNomes, SORT_STRING);
+      echo "<ul>";
+      foreach ($arrNomes as $item) {
+        echo "<li>".$item. "</li>";
+      }
+      echo "</ul>";
+      break;
 
     case "ordemDecrescente": 
-
+      rsort($arrNomes, SORT_STRING);
+      echo "<ul>";
+      foreach ($arrNomes as $item) {
+        echo "<li>".$item. "</li>";
+      }
+      echo "</ul>";
+      break;
   }
 }
