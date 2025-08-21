@@ -15,6 +15,7 @@ if ($_GET['action'] == 'listaCompra') {
       $nrItens = count($arrListaCompras);
       echo "Total de Itens:".$nrItens;
       break;
+
     case 'adicionar2': 
       array_push($arrListaCompras,"Azeite","Maionese");
       echo "<ul>";
@@ -36,5 +37,24 @@ if ($_GET['action'] == 'listaCompra') {
       echo "</ul>";
       $nrItens = count($arrListaCompras);
       echo "Total de Itens:".$nrItens;
+  }
+} 
+else if ($_GET['action'] == 'ordenarNomes'){
+
+  $arrNomes = ["Maria", "Ana", "Joao","Marina","Jose","Lucas", "Beatriz"];
+
+  switch ($_GET['etapa']) {
+    case 'exibirNomes':
+      echo "<ul>";
+      foreach ($arrNomes as $item) {
+        echo "<li>".$item. "</li>";
+      }
+      echo "</ul>";
+      break;
+
+    case "ordemAlfabetica":
+
+    case "ordemDecrescente": 
+
   }
 }

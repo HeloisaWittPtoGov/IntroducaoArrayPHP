@@ -55,6 +55,30 @@
             }
           )
         })
+        $("#BtnExibirNomes").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action: "ordenarNomes",
+              etapa: "exibirNomes",
+            },
+            function(response){
+              $("#exibeNomes").append(response)
+            }
+          )
+        })
+        $("#BtnOrdemAlfabetica").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action:"ordenarNomes",
+              etapa: "ordemAlfabetica"
+            },
+            function(response){
+
+            }
+          )
+        })
       })
     </script>
   </head>
@@ -78,8 +102,10 @@
     <div>
       <table>
         <tr>
+            <td>
+              <button type="button" id="BtnExibirNomes">Exibir Nomes</td>
           <td>
-            <button type="button" id="BtnOrdemAlfabetica">Ordem Alfabética</button>
+            <button type="button" id="BtnOrdemAlfabetica">Ordem Alfabetica</button>
           </td>
           <td>
             <button type="button" id="BtnOrdemDecrescente">Ordem Decrescente</button>
