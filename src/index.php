@@ -63,9 +63,11 @@
               etapa: "exibirNomes",
             },
             function(response){
-               $("#exibeNomes").empty()
+              $("#exibeNomes").empty()
               $("#exibeNomes").append(response)
-              
+              $("#BtnOrdemAlfabetica").prop("disabled", false)
+              $("#BtnOrdemDecrescente").prop("disabled", false)
+
             }
           )
         })
@@ -95,6 +97,45 @@
             }
           )
         })
+        $("#BtnExibirNumeros").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action:"filtraNumeros"
+            },
+            function(response){
+              $("#exibeNumeros").empty(),
+              $("#exibeNumeros").append(response)
+            }
+          )
+        })
+        $("#BtnFiltraPares").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action: "filtraNumeros",
+              etapa: "filtraPares"
+            },
+            function(response){
+              $("#exibeNumeros").empty()
+              $("#exibeNumeros").append(response)
+            }
+          )
+        })
+         $("#BtnFiltraImpares").on("click", function(){
+            $.get(
+              "controller.php",
+              {
+                action: "filtraNumeros",
+                etapa: "filtraImpares"
+              },
+              function(response){
+                $("#exibeNumeros").empty()
+                $("#exibeNumeros").append(response)
+              }
+            )
+        })
+
       })
     </script>
   </head>
@@ -121,14 +162,30 @@
             <td>
               <button type="button" id="BtnExibirNomes">Exibir Nomes</td>
           <td>
-            <button type="button" id="BtnOrdemAlfabetica">Ordem Alfabetica</button>
+            <button type="button" id="BtnOrdemAlfabetica" disabled>Ordem Alfabetica</button>
           </td>
           <td>
-            <button type="button" id="BtnOrdemDecrescente">Ordem Decrescente</button>
+            <button type="button" id="BtnOrdemDecrescente" disabled>Ordem Decrescente</button>
           </td>
         </tr>
       </table>
       <ul id="exibeNomes"></ul>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <td>
+            <button type="button" id="BtnExibirNumeros">Exibir Numeros</button>
+          </td>
+          <td>
+            <button type="button" id="BtnFiltraPares">Filtrar Pares</button>
+          </td>
+          <td>
+            <button type="button" id="BtnFiltraImpares">Filtrar Impares</button>
+          </td>
+        </tr>
+      </table>
+      <ul id="exibeNumeros"></ul>
     </div>
   </body>
 </html>

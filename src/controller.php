@@ -1,5 +1,18 @@
 <?php
+function print_array($array) {
+  echo "<ul>";
+  foreach ($array as $item) {
+    echo "<li>".$item. "</li>";
+  }
+  echo "</ul>";
+  $nrItens = count($array);
+  echo "Total:".$nrItens;
+}
 
+function soma_numeros($array){
+  $nrSomaArray = array_sum($array);
+  echo "O soma dos valor e: ".$nrSomaArray;
+}
 
 if ($_GET['action'] == 'listaCompra') {
 
@@ -7,36 +20,19 @@ if ($_GET['action'] == 'listaCompra') {
 
   switch($_GET['etapa']) {
     case 'exibeLista': 
-      echo "<ul>";
-      foreach ($arrListaCompras as $item) {
-        echo "<li>".$item. "</li>";
-      }
-      echo "</ul>";
-      $nrItens = count($arrListaCompras);
-      echo "Total de Itens:".$nrItens;
+     print_array($arrListaCompras);
       break;
 
     case 'adicionar2': 
       array_push($arrListaCompras,"Azeite","Maionese");
-      echo "<ul>";
-      foreach ($arrListaCompras as $item) {
-        echo "<li>".$item. "</li>";
-      }
-      echo "</ul>";
-      $nrItens = count($arrListaCompras);
-      echo "Total de Itens:".$nrItens;
+      print_array($arrListaCompras);
       break;
       
     case 'removerPrimeiro': 
     array_push($arrListaCompras,"Azeite","Maionese"); 
     array_shift($arrListaCompras);
-    echo "<ul>";
-      foreach ($arrListaCompras as $item) {
-        echo "<li>".$item. "</li>";
-      }
-      echo "</ul>";
-      $nrItens = count($arrListaCompras);
-      echo "Total de Itens:".$nrItens;
+    print_array($arrListaCompras);
+    break;
   }
 } 
 else if ($_GET['action'] == 'ordenarNomes'){
@@ -45,29 +41,50 @@ else if ($_GET['action'] == 'ordenarNomes'){
 
   switch ($_GET['etapa']) {
     case 'exibirNomes':
-      echo "<ul>";
-      foreach ($arrNomes as $item) {
-        echo "<li>".$item. "</li>";
-      }
-      echo "</ul>";
+      print_array($arrNomes);
       break;
 
     case "ordemAlfabetica":
       sort($arrNomes, SORT_STRING);
-      echo "<ul>";
-      foreach ($arrNomes as $item) {
-        echo "<li>".$item. "</li>";
-      }
-      echo "</ul>";
+      print_array($arrNomes);
       break;
 
     case "ordemDecrescente": 
       rsort($arrNomes, SORT_STRING);
-      echo "<ul>";
-      foreach ($arrNomes as $item) {
-        echo "<li>".$item. "</li>";
-      }
-      echo "</ul>";
+      print_array($arrNomes);
       break;
   }
+}
+else if ($_GET['action'] == 'filtraNumeros'){
+  
+  $arrNumeros = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'];
+  echo '<pre>';
+  print_r($arrNumeros);
+  echo '</pre>';
+  
+ switch ($_GET['etapa']) {
+  case 'filtraPares':
+    $numerosPares = array_filter($arrNumeros,function($numero){
+      return $numero % 2 == 0;
+    });
+    
+    echo '<pre>';
+    print_r($numerosPares);
+    echo '</pre>';
+
+    soma_numeros($numerosPares);;
+    break;
+
+  case 'filtraImpares':
+    $numerosImpares = array_filter($arrNumeros,function($numero){
+      return $numero % 2 != 0;
+    });
+    echo '<pre>';
+    print_r($numerosImpares);
+    echo '</pre>';
+
+    soma_numeros($numerosImpares);
+    break;
+  }
+  
 }
