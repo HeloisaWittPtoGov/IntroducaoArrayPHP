@@ -175,6 +175,18 @@ else if ($_POST['action'] == 'exibeAlunos'){
       print_r($arrAlunosNota8);
       echo'</pre>';
       break;
+
+      case 'ordenar':
+      uasort($arrAlunos, function($aluno1, $aluno2){
+        if($aluno1['nota']== $aluno2['2']){
+          return 0;
+        }
+        return ($aluno2['nota'] > $aluno1['nota']) ? 1:-1;
+      });
+      echo '<pre>';
+      print_r($arrAlunos);
+      echo'</pre>';
+      break;
   }
   
   $totalAlunos = count($arrAlunos);
