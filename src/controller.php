@@ -9,6 +9,12 @@ function print_array($array) {
   echo "Total:".$nrItens;
 }
 
+function exibe_array($array) {
+  echo '<pre>';
+  print_r($array);
+  echo'</pre>';
+}
+
 function soma_numeros($array){
   $nrSomaArray = array_sum($array);
   echo "O soma dos valor e: ".$nrSomaArray;
@@ -58,31 +64,24 @@ else if ($_GET['action'] == 'ordenarNomes'){
 else if ($_GET['action'] == 'filtraNumeros'){
   
   $arrNumeros = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'];
-  echo '<pre>';
-  print_r($arrNumeros);
-  echo '</pre>';
+  exibe_array($arrNumeros);
   
  switch ($_GET['etapa']) {
   case 'filtraPares':
     $numerosPares = array_filter($arrNumeros,function($numero){
       return $numero % 2 == 0;
     });
-    
-    echo '<pre>';
-    print_r($numerosPares);
-    echo '</pre>';
-
-    soma_numeros($numerosPares);;
+    exibe_array($numerosPares);
+  
+    soma_numeros($numerosPares);
     break;
 
   case 'filtraImpares':
     $numerosImpares = array_filter($arrNumeros,function($numero){
       return $numero % 2 != 0;
     });
-    echo '<pre>';
-    print_r($numerosImpares);
-    echo '</pre>';
-
+    exibe_array($numerosImpares);
+    
     soma_numeros($numerosImpares);
     break;
   }
@@ -114,15 +113,10 @@ else if ($_GET['action'] == 'exibeProduto'){
     $arrPrecos []= $preco;
 
     $arrListaProdutos = array_combine($arrProdutos, $arrPrecos);
-    
-    echo '<pre>';
-    print_r($arrListaProdutos);
-    echo'</pre>';
+    exibe_array($arrListaProdutos);
 
   } else{
-      echo '<pre>';
-      print_r($arrListaProdutos);
-      echo '</pre>';
+    exibe_array($arrListaProdutos);
     } 
 
 }
@@ -138,9 +132,7 @@ else if ($_POST['action'] == 'exibeAlunos'){
 
   switch ($_POST['etapa']) {
     case 'consultaAluno':
-      echo '<pre>';
-      print_r($arrAlunos);
-      echo'</pre>';
+      exibe_array($arrAlunos);
       break;
     
     case'incluirAlunos':
@@ -149,10 +141,7 @@ else if ($_POST['action'] == 'exibeAlunos'){
       $novoId = count($arrAlunos) + 101;
       $arrAlunos[$novoId]=$novoAluno;
 
-      echo '<pre>';
-      print_r($arrAlunos);
-      echo'</pre>';
-
+      exibe_array($arrAlunos);
       break;
 
     case "atualizarAluno":
@@ -162,18 +151,14 @@ else if ($_POST['action'] == 'exibeAlunos'){
           $aluno['nota'] = $novaNota;
         }
       }
-      echo '<pre>';
-      print_r($arrAlunos);
-      echo'</pre>';
+      exibe_array($arrAlunos);
       break;
 
      case "filtrar8":
       $arrAlunosNota8 = array_filter($arrAlunos, function($aluno){
         return $aluno['nota'] >= 8;
       });
-      echo '<pre>';
-      print_r($arrAlunosNota8);
-      echo'</pre>';
+      exibe_array($arrAlunosNota8);
       break;
 
       case 'ordenar':
@@ -183,9 +168,7 @@ else if ($_POST['action'] == 'exibeAlunos'){
         }
         return ($aluno2['nota'] > $aluno1['nota']) ? 1:-1;
       });
-      echo '<pre>';
-      print_r($arrAlunos);
-      echo'</pre>';
+      exibe_array($arrAlunos);
       break;
   }
   
