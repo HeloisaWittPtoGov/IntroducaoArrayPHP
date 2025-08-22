@@ -105,14 +105,25 @@ else if ($_GET['action'] == 'exibeProduto'){
   $arrProdutos = ["Arroz","Feijao","Macarrao"];
   $arrPrecos = ["5.50","7.20","4.80"];
 
-  array_push($arrProdutos,"Azeite");
-  array_push($arrPrecos,"6.59");
+  $produto = $_GET["produto"];
+  $preco = $_GET["preco"];
+   $arrListaProdutos = array_combine($arrProdutos, $arrPrecos);
 
-  $arrListaProdutos = array_combine($arrProdutos, $arrPrecos);
+  if($_GET['etapa'] =="incluirProduto"){
+    $arrProdutos []= $produto;
+    $arrPrecos []= $preco;
 
-  echo '<pre>';
-  print_r($arrListaProdutos);
-  echo '</pre>';
+    $arrListaProdutos = array_combine($arrProdutos, $arrPrecos);
+    
+    echo '<pre>';
+    print_r($arrListaProdutos);
+    echo'</pre>';
+
+  } else{
+      echo '<pre>';
+      print_r($arrListaProdutos);
+      echo '</pre>';
+    } 
 
 }
 else if ($_POST['action'] == 'exibeAlunos'){

@@ -201,6 +201,21 @@
 
           )
         })
+        $("#BtnIncluirProdutos").on("click", function(){
+          $.get(
+            "controller.php",
+            {
+              action:"exibeProduto",
+              etapa: "incluirProduto",
+              produto: $("#nmProduto").val(),
+              preco: $("#nrPreco").val(),
+            },
+            function(response){
+              $("#exibeProdutos").empty()
+              $("#exibeProdutos").append(response)
+            }
+          )
+        })
 
       })
     </script>
@@ -274,6 +289,21 @@
         <tr>
           <td>
             <button type="button" id="BtnExibirProdutos">Exibir Produtos</button>
+          </td>
+          <td style="text-align: rigth;">
+            Produto:
+          </td>
+          <td>
+            <input id="nmProduto" type="text">
+          </td>
+          <td style="text-align: rigth;">
+            Preco:
+          </td>
+          <td>
+            <input id="nrPreco" type="number">
+          </td>
+          <td>
+            <button type="button" id="BtnIncluirProdutos">Incluir Produtos</button>
           </td>
         </tr>
       </table>
