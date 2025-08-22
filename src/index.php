@@ -164,6 +164,7 @@
               etapa:"consultaAluno",
             },
             function(response){
+               $("#exibeAlunos").empty()
               $("#exibeAlunos").append(response)
             }
           )
@@ -213,6 +214,33 @@
             function(response){
               $("#exibeProdutos").empty()
               $("#exibeProdutos").append(response)
+            }
+          )
+        })
+        $("#BtnFiltra8").on("click", function(){
+          $.post(
+            "controller.php",
+            {
+              action:"exibeAlunos",
+              etapa: "filtrar8",
+            },
+            function(response){
+              $("#exibeAlunos").empty()
+              $("#exibeAlunos").append(response)
+            }
+          )
+        })
+
+        $("#BtnOrdenarDecrescente").on("click", function(){
+          $.post(
+            "controller.php",
+            {
+              action:"exibeAlunos",
+              etapa: "ordenar",
+            },
+            function(response){
+              $("#exibeAlunos").empty()
+              $("#exibeAlunos").append(response)
             }
           )
         })
@@ -312,9 +340,6 @@
     <div>
       <table>
         <tr>
-          <td>
-            <button type="button" id="BtnExibeAlunos">Exibir Alunos</button>
-          </td>
           <td style="text-align: right;">
             Nome:
           </td>
@@ -338,6 +363,19 @@
           </td>
           <td>
             <button type="button" id="BtnAtualizarAluno">Atualizar Aluno</button>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <button type="button" id="BtnExibeAlunos">Exibir Alunos</button>
+          </td>
+          <td>
+            <button type="button" id="BtnFiltra8">Filtrar Nota 8</button>
+          </td>
+          <td>
+            <button type="button" id="BtnOrdenarDecrescente">Ordenar</button>
           </td>
         </tr>
       </table>

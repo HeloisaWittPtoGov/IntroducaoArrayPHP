@@ -165,7 +165,26 @@ else if ($_POST['action'] == 'exibeAlunos'){
       echo '<pre>';
       print_r($arrAlunos);
       echo'</pre>';
-      
-  }   
+      break;
+
+     case "filtrar8":
+      $arrAlunosNota8 = array_filter($arrAlunos, function($aluno){
+        return $aluno['nota'] >= 8;
+      });
+      echo '<pre>';
+      print_r($arrAlunosNota8);
+      echo'</pre>';
+      break;
+  }
+  
+  $totalAlunos = count($arrAlunos);
+  $nrTotalNotas = 0;
+  foreach($arrAlunos as $aluno){
+
+   $nrTotalNotas = $nrTotalNotas + $aluno['nota'];
+  }
+  $nrMedia = $nrTotalNotas/$totalAlunos;
+
+  echo "A media dos alunos e: ".$nrMedia;
   
 }
